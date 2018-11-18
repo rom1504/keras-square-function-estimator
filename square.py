@@ -5,10 +5,10 @@ from keras.layers import Dense, Activation
 from keras.models import Sequential
 
 model = Sequential([
-Dense(40, input_shape=(1,)),
+Dense(64, input_shape=(1,)),
 Activation('relu'),
-Dense(12),
-Activation('sigmoid'),
+Dense(32),
+Activation('relu'),
 Dense(1)
     ])
 
@@ -30,7 +30,6 @@ for i in range(20):
     print(np.mean(np.square(predictions - y)))
     predictions_validation = model.predict(validation_x)
     print(np.mean(np.square(predictions_validation - validation_y)))
-    print(np.square(predictions_validation - validation_y)[:3])
 
 
 model.save('my_model.h5')
