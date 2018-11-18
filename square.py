@@ -25,11 +25,12 @@ validation_x = np.arange(0, 1, 0.1).reshape(-1, 1)
 validation_y = np.square(validation_x)
 
 for i in range(20):
+    print("iteration {}/20".format(i))
     model.fit(x, y, nb_epoch=25, batch_size=16)
     predictions = model.predict(x)
-    print(np.mean(np.square(predictions - y)))
+    print("training set rmse {}".format(np.mean(np.square(predictions - y))))
     predictions_validation = model.predict(validation_x)
-    print(np.mean(np.square(predictions_validation - validation_y)))
+    print("validation set rmse {}".format(np.mean(np.square(predictions_validation - validation_y))))
 
 
 model.save('my_model.h5')
